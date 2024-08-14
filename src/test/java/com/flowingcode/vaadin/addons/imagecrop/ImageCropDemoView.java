@@ -29,7 +29,7 @@ import com.vaadin.flow.router.Route;
 @SuppressWarnings("serial")
 @ParentLayout(DemoLayout.class)
 @Route("image-crop")
-@GithubBranch("initial-implementation")
+@GithubBranch("master")
 @GithubLink("https://github.com/FlowingCode/ImageCrop")
 public class ImageCropDemoView extends TabbedDemo {
 
