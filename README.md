@@ -2,6 +2,7 @@
 [![Stars on vaadin.com/directory](https://img.shields.io/vaadin-directory/star/image-crop-add-on.svg)](https://vaadin.com/directory/component/image-crop-add-on)
 [![Build Status](https://jenkins.flowingcode.com/job/ImageCrop-addon/badge/icon)](https://jenkins.flowingcode.com/job/ImageCrop-addon)
 [![Maven Central](https://img.shields.io/maven-central/v/com.flowingcode.vaadin.addons/image-crop-addon)](https://mvnrepository.com/artifact/com.flowingcode.vaadin.addons/image-crop-addon)
+[![Javadoc](https://img.shields.io/badge/javadoc-00b4f0)](https://javadoc.flowingcode.com/artifact/com.flowingcode.vaadin.addons/image-crop-addon)
 
 # Image Crop Add-on
 
