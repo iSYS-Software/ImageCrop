@@ -175,7 +175,8 @@ class ImageCropElement extends ReactAdapterElement {
 				const scaleX = image.naturalWidth / image.width;
 				const scaleY = image.naturalHeight / image.height;
 				const ctx = canvas.getContext("2d");
-				const pixelRatio = window.devicePixelRatio;
+				// const pixelRatio = window.devicePixelRatio;
+				const pixelRatio = 1.0;
 				canvas.width = ccrop.width * pixelRatio;
 				canvas.height = ccrop.height * pixelRatio;
 
