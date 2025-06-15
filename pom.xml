@@ -37,9 +37,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/FlowingCode/ImageCrop</url>
-        <connection>scm:git:git://github.com/FlowingCode/ImageCrop.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:/FlowingCode/ImageCrop.git</developerConnection>
+        <url>https://github.com/iSYS-Software/ImageCrop</url>
+        <connection>scm:git:git://github.com/iSYS-Software/ImageCrop.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:/iSYS-Software/ImageCrop.git</developerConnection>
         <tag>master</tag>
     </scm>
 
@@ -48,6 +48,11 @@
             <id>flowingcode</id>
             <organization>Flowing Code</organization>
             <organizationUrl>https://www.flowingcode.com</organizationUrl>
+        </developer>
+        <developer>
+            <id>isys</id>
+            <organization>iSYS</organization>
+            <organizationUrl>https://www.isys.de</organizationUrl>
         </developer>
     </developers>
 
