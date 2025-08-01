@@ -50,27 +50,49 @@ import com.vaadin.flow.shared.Registration;
 public class ImageCrop extends ReactAdapterComponent {
   
   private static final String IMG_FULL_HEIGHT_CLASS_NAME = "img-full-height";
+  private static final String DEFAULT_MIMETYPE = "image/png";
 
   private String croppedImageDataUri;
+
+  /**
+   * Constructs an ImageCrop component with the given image URL and the default mime type.
+   *
+   * @param src the URL of the image to be cropped
+   */
+  public ImageCrop(String src) {
+    this(src, DEFAULT_MIMETYPE);
+  }
 
   /**
    * Constructs an ImageCrop component with the given image URL.
    *
    * @param src the URL of the image to be cropped
+   * @param mimeType the mime type of the image to be cropped
    */
-  public ImageCrop(String src) {
+  public ImageCrop(String src, String mimeType) {
     this.setImageSrc(src);
     this.addCroppedImageListener(this::updateCroppedImage);
     this.croppedImageDataUri = src;
+    setState("mimeType", mimeType);
+  }
+
+  /**
+   * Constructs an ImageCrop component with the given image and the default mime type.
+   *
+   * @param image the image to be cropped
+   */
+  public ImageCrop(Image image) {
+    this(image.getSrc(), DEFAULT_MIMETYPE);
   }
 
   /**
    * Constructs an ImageCrop component with the given image.
    *
    * @param image the image to be cropped
+   * @param mimeType the mime type of the image to be cropped
    */
-  public ImageCrop(Image image) {
-    this(image.getSrc());
+  public ImageCrop(Image image, String mimeType) {
+    this(image.getSrc(), mimeType);
     image.getAlt().ifPresent(a -> this.setImageAlt(a)); 
   }
 
@@ -139,7 +161,7 @@ public class ImageCrop extends ReactAdapterComponent {
    */
   public void setCrop(Crop crop) {
     setState("crop", crop);
-    getElement().executeJs("this._updateCroppedImage(this.crop)");
+    getElement().executeJs("this._updateCroppedImage(this.crop, this.mimeType)");
   }
 
   /**

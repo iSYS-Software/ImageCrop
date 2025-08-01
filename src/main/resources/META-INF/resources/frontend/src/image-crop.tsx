@@ -31,6 +31,7 @@ class ImageCropElement extends ReactAdapterElement {
 		const [imgSrc] = hooks.useState<string>("imgSrc");
 		const imgRef = useRef<HTMLImageElement>(null);
 		const [imgAlt] = hooks.useState<string>("imgAlt");
+		const [mimeType] = hooks.useState<string>("mimeType");
 		const [aspect] = hooks.useState<number>("aspect");
 		const [circularCrop] = hooks.useState<boolean>("circularCrop", false);
 		const [keepSelection] = hooks.useState<boolean>("keepSelection", false);
@@ -46,7 +47,7 @@ class ImageCropElement extends ReactAdapterElement {
 		const prevImgSize = useRef<{ width: number; height: number } | null>(null);
 
 		/**
-		* Handles intial calculations on image load.
+		* Handles initial calculations on image load.
 		*/
 		const onImageLoad = () => {
 			if (imgRef.current) {
@@ -70,7 +71,7 @@ class ImageCropElement extends ReactAdapterElement {
 						height
 					)
 					setCrop(newcrop);
-					this._updateCroppedImage(newcrop);
+					this._updateCroppedImage(newcrop, mimeType);
 				}
 			}
 		};
@@ -123,7 +124,7 @@ class ImageCropElement extends ReactAdapterElement {
 		};
 
 		const onComplete = (c: PixelCrop) => {
-			this._updateCroppedImage(c);
+			this._updateCroppedImage(c, mimeType);
 		};
 		
 		return (
@@ -161,7 +162,7 @@ class ImageCropElement extends ReactAdapterElement {
 		);
 	}
 	
-	public _updateCroppedImage(crop: PixelCrop|PercentCrop) {
+	public _updateCroppedImage(crop: PixelCrop|PercentCrop, mimeType: string) {
 			const image = this.querySelector("img");
 			if (crop && image) {
 
@@ -209,7 +210,7 @@ class ImageCropElement extends ReactAdapterElement {
 					ctx.restore();
 
 					// get the cropped image
-					let croppedImageDataUri = canvas.toDataURL("image/png", 1.0);
+					let croppedImageDataUri = canvas.toDataURL(mimeType, 1.0);
 
 					// dispatch the event containing cropped image
 					this.fireCroppedImageEvent(croppedImageDataUri);
