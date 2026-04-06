@@ -10,10 +10,10 @@
     <url>https://www.flowingcode.com/en/open-source/</url>
 
     <properties>
-        <vaadin.version>24.4.6</vaadin.version>
+        <vaadin.version>25.1.0</vaadin.version>
         <selenium.version>4.10.0</selenium.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <drivers.dir>${project.basedir}/drivers</drivers.dir>
@@ -119,6 +119,12 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.20.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>com.flowingcode.vaadin.addons.demo</groupId>
             <artifactId>commons-demo</artifactId>
             <version>${flowingcode.commons.demo.version}</version>
@@ -196,7 +202,10 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
-                    <archive>
+                <excludes>
+                    <exclude>META-INF/VAADIN/config/flow-build-info.json</exclude>
+                </excludes>
+                <archive>
                         <index>true</index>
                         <manifest>
                             <addClasspath>false</addClasspath>
